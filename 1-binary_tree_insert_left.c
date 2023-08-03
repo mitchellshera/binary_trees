@@ -10,23 +10,23 @@
  *         Otherwise - a pointer to the new node.
  */
 
-binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value) {
-    if (parent == NULL) {
-        return NULL;
-    }
+binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value)
+{
+	binary_tree_t *new_left_child;
 
-    binary_tree_t *new_left_child = binary_tree_node(parent, value);
+	if (parent == NULL)
+		return (NULL);
 
-    if (new_left_child == NULL) {
-        return NULL;
-    }
+	new_left_child = binary_tree_node(parent, value);
+	if (new_left_child == NULL)
+		return (NULL);
 
-    if (parent->left != NULL) {
-        new_left_child->left = parent->left;
-        parent->left->parent = new_left_child;
-    }
+	if (parent->left != NULL)
+	{
+		new_left_child->left = parent->left;
+		parent->left->parent = new_left_child;
+	}
+	parent->left = new_left_child;
 
-    parent->left = new_left_child;
-
-    return new_left_child;
+	return (new_left_child);
 }
